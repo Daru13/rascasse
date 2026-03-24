@@ -1,5 +1,11 @@
 set -g pad " "
 
+set user_fg_color "white"
+set user_bg_color "blue"
+set user_fg_color "white"
+set root_bg_color "red"
+set root_fg_color "white"
+
 ## Function to show a segment
 function prompt_segment -d "Function to show a segment"
   # Get colors
@@ -40,9 +46,9 @@ function show_user -d "Show user"
     set -l uid (id -u $USER)
 
     if [ $uid -eq 0 ]
-      prompt_segment red brwhite " $who "
+      prompt_segment $root_bg_color $root_fg_color " $who "
     else
-      prompt_segment blue brwhite " $who "
+      prompt_segment $user_bg_color $user_fg_color " $who "
     end
   end
 end
@@ -79,9 +85,9 @@ function show_prompt -d "Shows prompt with cue for current priv"
   set -l uid (id -u $USER)
 
   if [ $uid -eq 0 ]
-    prompt_segment red brwhite " # "
+    prompt_segment $root_bg_color brwhite " "
   else
-    prompt_segment blue brwhite " \$ "
+    prompt_segment $user_bg_color brwhite " "
   end
 
   set_color normal
@@ -98,23 +104,23 @@ function fish_prompt
 
   show_user
   if [ $uid -eq 0 ]
-    prompt_segment white red ""
+    prompt_segment $root_fg_color $root_bg_color ""
   else
-    prompt_segment white blue ""
+    prompt_segment $user_fg_color $user_bg_color ""
   end
 
   show_pwd
   if [ $uid -eq 0 ]
-    prompt_segment red white ""
+    prompt_segment $root_bg_color $root_fg_color ""
   else
-    prompt_segment blue white ""
+    prompt_segment $user_bg_color $user_fg_color ""
   end
 
   show_prompt
   if [ $uid -eq 0 ]
-    prompt_segment normal red ""
+    prompt_segment normal $root_fg_color ""
   else
-    prompt_segment normal blue ""
+    prompt_segment normal $user_bg_color ""
   end
 
   prompt_segment normal normal " "
