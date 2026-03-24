@@ -1,6 +1,5 @@
 set -g pad " "
 
-set user_fg_color "white"
 set user_bg_color "blue"
 set user_fg_color "white"
 set root_bg_color "red"
