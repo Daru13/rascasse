@@ -18,11 +18,6 @@ end
 
 ## Function to show current status
 function show_status -d "Function to show the current status"
-  # if [ $RETVAL -ne 0 ]
-  #   prompt_segment red black " ▲ "
-  #   set pad ""
-  # end
-  
   if [ -n "$SSH_CLIENT" ]
     prompt_segment blue black " SSH "
     set pad ""
@@ -49,14 +44,6 @@ function show_user -d "Show user"
     else
       prompt_segment blue brwhite " $who "
     end
-
-
-    # Skip @ bit if hostname == username
-    # if [ "$USER" != "$HOST" ]
-    #   prompt_segment green orange "@"
-    #   prompt_segment green black "$host "
-    #   set pad ""
-    # end
   end
 end
 
