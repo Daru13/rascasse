@@ -1,9 +1,9 @@
 set -g pad " "
 
-set user_bg_color "blue"
-set user_fg_color "white"
-set root_bg_color "red"
-set root_fg_color "white"
+set -g user_bg_color "blue"
+set -g user_fg_color "white"
+set -g root_bg_color "red"
+set -g root_fg_color "white"
 
 ## Function to show a segment
 function prompt_segment -d "Function to show a segment"
