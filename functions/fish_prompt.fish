@@ -78,7 +78,8 @@ function show_pwd -d "Show the current directory"
     if [ "$long_pwd" = "/" ]
       set pwd "/"
     else if string match --regex "^/" "$long_pwd" > /dev/null
-      set pwd (echo "$long_pwd" | sed -e "s#/#/  #" -e "s#/#  #2g")
+      # If the path is absolute, remove the leading slash.
+      set pwd (string sub -s 2 "$long_pwd" | sed "s#/#  #g")
     else
       set pwd (echo "$long_pwd" | sed "s#/#  #g")
     end
